@@ -3,10 +3,10 @@ using UnityEngine;
 /// <summary>
 /// Exercise 5: Collects shields and updates score
 /// </summary>
-public class ShieldCollector : MonoBehaviour {
+public class ShieldCollectorBase : MonoBehaviour {
   [SerializeField] private CollisionNotifier collisionNotifier;
-  [SerializeField] private int pointsPerType1Shield = 5;
-  [SerializeField] private int pointsPerType2Shield = 10;
+  public int pointsPerType1Shield = 5;
+  public int pointsPerType2Shield = 10;
   [SerializeField] private string type1ShieldTag = "Blue Shield";
   [SerializeField] private string type2ShieldTag = "Purple Shield";
 
@@ -36,5 +36,13 @@ public class ShieldCollector : MonoBehaviour {
         ScoreManager.Instance.AddScore(pointsPerType2Shield);
     }
     shield.SetActive(false);
+  }
+
+  public void changePointsPerType1Shield(int newPoints) {
+    pointsPerType1Shield = newPoints;
+  }
+
+  public void changePointsPerType2Shield(int newPoints) {
+    pointsPerType2Shield = newPoints;
   }
 }

@@ -51,4 +51,11 @@ public class MovementController : MonoBehaviour, IMovable {
     shouldMove = false;
     IsMoving = false;
   }
+
+  public void ScatterFrom(Vector3 point, float distance) {
+    Vector3 direction = (transform.position - point).normalized;
+    if (direction == Vector3.zero)
+      direction = Random.onUnitSphere;
+    MoveTowards(transform.position + direction * distance, defaultSpeed);
+  }
 }
